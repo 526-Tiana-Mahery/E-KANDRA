@@ -4,7 +4,7 @@ MVP d'une application de gestion de tâches en mode Kanban, 100% Python.
 
 ## Technologies
 - Backend : FastAPI + Tornado (WebSocket)
-- Frontend web : Dash + Plotly + Bootstrap
+- Frontend web : Dash + Plotly 
 - Base de données : SQLite
 - Auth : JWT
 - Temps réel : Tornado WebSocket
