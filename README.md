@@ -8,6 +8,7 @@ MVP d'une application de gestion de tâches en mode Kanban, 100% Python.
 - Base de données : SQLite
 - Auth : JWT
 - Temps réel : Tornado WebSocket
+- Mobile : Kivy + KivyMD
 
 ## Lancement
 
