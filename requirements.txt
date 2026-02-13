@@ -1,0 +1,24 @@
+# task-manager-mvp/requirements.txt
+
+# Backend API + WebSockets
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0      # serveur ASGI + reload
+tornado>=6.4                   # pour les WebSockets (plus mature que fastapi-websockets pour MVP)
+
+# Authentification basique
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.9        # pour forms (login/register)
+
+# Base de données SQLite + modélisation simple
+sqlmodel>=0.0.21               # SQLAlchemy + Pydantic (idéal pour SQLite + typage)
+aiosqlite>=0.20.0              # si on passe async plus tard
+
+# Frontend Dash + Plotly
+dash>=2.17.0
+dash-bootstrap-components>=1.6.0   # layout rapide et beau (Bootstrap-like)
+plotly>=5.22.0
+
+# Utilitaires
+python-dotenv>=1.0.1           # pour charger .env
+pydantic-settings>=2.3.0       # config via .env (optionnel mais propre)

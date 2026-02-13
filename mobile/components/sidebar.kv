@@ -1,0 +1,42 @@
+<SidebarContent>:
+    orientation: 'vertical'
+    spacing: dp(8)
+    padding: dp(16), dp(24), dp(16), dp(16)
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: dp(140)
+        spacing: dp(8)
+
+        MDLabel:
+            text: root.current_user_name
+            font_style: "H5"
+            bold: True
+
+        MDLabel:
+            text: root.current_user_email
+            theme_text_color: "Secondary"
+            font_style: "Body"
+
+        MDSeparator:
+            height: dp(1)
+
+    ScrollView:
+
+        MDList:
+
+            for item in root.menu_items:
+                OneLineIconListItem:
+                    text: item["text"]
+                    on_release: root.on_menu_item_press(item["screen"])
+
+                    IconLeftWidget:
+                        icon: item["icon"]
+                        theme_text_color: "Primary" if item["screen"] else "Secondary"
+
+
+<Sidebar>:
+    radius: [0, dp(16), dp(16), 0]
+    width: dp(280)
+    elevation: 4

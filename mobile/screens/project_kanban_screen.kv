@@ -1,0 +1,28 @@
+<ProjectKanbanScreen>:
+    md_bg_color: app.theme_cls.bg_light
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: root.project_name
+            elevation: 2
+            right_action_items: [["plus", lambda x: root.add_new_task()]]
+
+        ScrollView:
+            do_scroll_x: True
+            do_scroll_y: False
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                spacing: dp(16)
+                padding: dp(16)
+                size_hint_x: None
+                width: self.minimum_width
+                adaptive_height: True
+
+                for col_name in root.columns:
+                    KanbanColumn:
+                        column_name: col_name
+                        tasks: root.tasks_by_column.get(col_name, [])
+                        on_task_dropped: root.on_task_status_change(args[1], col_name)			

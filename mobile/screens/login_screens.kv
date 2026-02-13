@@ -1,0 +1,114 @@
+#:kivy 2.3.0
+#:import md_bg_color kivymd.color_definitions.theme_bg_light
+
+<LoginScreen>:
+    orientation: 'vertical'
+    md_bg_color: app.theme_cls.bg_light
+
+    MDTopAppBar:
+        title: "E-KANDRA"
+        elevation: 0
+        md_bg_color: 0, 0, 0, 0
+        specific_text_color: app.theme_cls.primary_color
+        left_action_items: [["arrow-left", lambda x: app.go_to("splash") if hasattr(app, 'go_to') else None]]
+
+    ScrollView:
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(24)
+            padding: dp(32), dp(16), dp(32), dp(32)
+            adaptive_height: True
+            size_hint_y: None
+
+            MDLabel:
+                text: "Bienvenue"
+                font_style: "Display"
+                role: "large"
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDLabel:
+                text: "Connectez-vous pour gérer vos projets"
+                font_style: "Body"
+                role: "medium"
+                halign: "center"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            # Logo ou illustration (optionnel)
+            MDCard:
+                orientation: "vertical"
+                size_hint: 0.5, None
+                height: dp(140)
+                pos_hint: {"center_x": .5}
+                elevation: 0
+                md_bg_color: 0, 0, 0, 0
+
+                Image:
+                    source: "assets/images/logo.png"
+                    allow_stretch: True
+                    keep_ratio: True
+
+            MDTextField:
+                id: email
+                hint_text: "Adresse email"
+                mode: "outlined"
+                input_filter: "email"
+                icon_left: "email-outline"
+                helper_text: "exemple@entreprise.com"
+                helper_text_mode: "on_focus"
+                required: True
+
+            MDTextField:
+                id: password
+                hint_text: "Mot de passe"
+                password: True
+                icon_left: "lock-outline"
+                icon_right: "eye" if self.password else "eye-off"
+                icon_right_color_normal: app.theme_cls.icon_color
+                mode: "outlined"
+                required: True
+                on_icon_right_press: self.password = not self.password
+
+            MDLabel:
+                text: root.error_text
+                halign: "center"
+                theme_text_color: "Error"
+                size_hint_y: None
+                height: self.texture_size[1] + dp(8)
+                markup: True
+
+            MDFilledButton:
+                text: "SE CONNECTER"
+                style: "filled"
+                pos_hint: {"center_x": .5}
+                width: dp(240)
+                on_release: root.attempt_login()
+
+            MDTextButton:
+                text: "Mot de passe oublié ?"
+                pos_hint: {"center_x": .5}
+                theme_text_color: "Primary"
+                # on_release: root.manager.current = "forgot_password"   # si tu ajoutes cet écran
+
+            Widget:
+                size_hint_y: None
+                height: dp(40)
+
+            MDLabel:
+                text: "Pas encore de compte ?"
+                halign: "center"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDTextButton:
+                text: "S'inscrire"
+                pos_hint: {"center_x": .5}
+                theme_text_color: "Primary"
+                font_style: "Body"
+                role: "large"
+                # on_release: root.manager.current = "register"   # si tu as un écran d'inscription

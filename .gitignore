@@ -1,0 +1,25 @@
+# Python / Kivy / Buildozer
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+app.db
+*.sqlite3
+*.db*
+*.keystore
+.buildozer/
+bin/
+*.apk
+*.aab
+
+# Environnements
+venv/
+env/
+.venv/
+
+# Temporaires
+*.log
+*.tmp
+*~
+.DS_Store

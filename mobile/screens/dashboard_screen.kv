@@ -1,0 +1,71 @@
+<DashboardScreen>:
+    md_bg_color: app.theme_cls.bg_light
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Tableau de bord"
+            elevation: 0
+            right_action_items: [["refresh", lambda x: root.refresh()]]
+
+        MDScrollView:
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: dp(16)
+                spacing: dp(16)
+                adaptive_height: True
+
+                MDLabel:
+                    text: root.welcome_message
+                    font_style: "H5"
+                    halign: "center"
+                    theme_text_color: "Primary"
+
+                MDCard:
+                    orientation: "vertical"
+                    padding: dp(16)
+                    spacing: dp(12)
+                    size_hint_y: None
+                    height: dp(180)
+                    elevation: 1
+
+                    MDLabel:
+                        text: "Projets récents"
+                        font_style: "H6"
+
+                    MDList:
+                        for project in root.recent_projects:
+                            OneLineAvatarListItem:
+                                text: project['name']
+                                on_release: root.go_to_kanban(project['id'])
+
+                                IconLeftWidget:
+                                    icon: "folder-outline"
+
+                MDCard:
+                    orientation: "vertical"
+                    padding: dp(16)
+                    spacing: dp(12)
+                    size_hint_y: None
+                    height: dp(140)
+                    elevation: 1
+
+                    MDLabel:
+                        text: "Équipes"
+                        font_style: "H6"
+
+                    MDList:
+                        for team in root.recent_teams:
+                            OneLineAvatarListItem:
+                                text: f"{team['name']} ({team['members']} membres)"
+                                on_release: root.go_to_team(team['id'])
+
+                                IconLeftWidget:
+                                    icon: "account-group-outline"
+
+                # Espace en bas pour ne pas coller au bord
+                Widget:
+                    size_hint_y: None
+                    height: dp(80)

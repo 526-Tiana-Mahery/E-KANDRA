@@ -1,0 +1,14 @@
+<TaskCard>:
+    md_bg_color: 1, 1, 1, 1
+    ripple_effect: True
+
+    canvas.before:
+        Color:
+            rgba: 0.98, 0.98, 1, 1 if self.elevation > 0 else 0.96, 0.96, 0.98, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: root.radius
+
+    # Le contenu est construit dynamiquement en Python
+    # Mais tu peux ajouter un fond ou effet ici si besoin

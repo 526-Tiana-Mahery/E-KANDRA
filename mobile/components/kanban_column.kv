@@ -1,0 +1,16 @@
+<KanbanColumn>:
+    orientation: 'vertical'
+    size_hint_x: None
+    width: dp(320)
+    height: root.parent.height if root.parent else dp(600)
+
+    canvas.before:
+        Color:
+            rgba: 0.96, 0.96, 0.98, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [12,]
+
+    # Le contenu est construit en Python pour plus de flexibilité
+    # Mais tu peux ajouter un placeholder ici si besoin

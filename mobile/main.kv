@@ -1,0 +1,110 @@
+#:kivy 2.3.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+# ────────────────────────────────────────────────
+# Thèmes globaux et couleurs personnalisées
+# ────────────────────────────────────────────────
+
+<E_KANDRA_App>:
+    # Ces propriétés sont accessibles via app.XXX dans tous les .kv
+    primary_color: get_color_from_hex("#3F51B5")        # Indigo principal
+    accent_color: get_color_from_hex("#FFC107")         # Amber accent
+    bg_light: get_color_from_hex("#FAFAFA")
+    bg_dark: get_color_from_hex("#121212")
+    text_primary: get_color_from_hex("#212121")
+    text_secondary: get_color_from_hex("#757575")
+    error_color: get_color_from_hex("#F44336")
+
+# ────────────────────────────────────────────────
+# Fonts globaux (Roboto est déjà dans assets/fonts)
+# ────────────────────────────────────────────────
+
+<Label>:
+    font_name: "assets/fonts/Roboto-Regular.ttf"
+    font_size: "14sp"
+
+<MDLabel>:
+    font_name: "assets/fonts/Roboto-Regular.ttf"
+
+<Button>:
+    font_name: "assets/fonts/Roboto-Medium.ttf"
+
+# ────────────────────────────────────────────────
+# Styles communs pour les écrans / cards / boutons
+# ────────────────────────────────────────────────
+
+<MDScreen>:
+    md_bg_color: app.bg_light
+
+<MDCard>:
+    elevation: 1
+    radius: [16, 16, 16, 16]
+    md_bg_color: 1, 1, 1, 1
+    ripple_effect: True
+
+<MDFilledButton>:
+    md_bg_color: app.primary_color
+    text_color: 1, 1, 1, 1
+    font_name: "assets/fonts/Roboto-Medium.ttf"
+    font_size: "15sp"
+    line_color: 0, 0, 0, 0
+
+<MDOutlinedButton>:
+    line_color: app.primary_color
+    text_color: app.primary_color
+
+<MDTextField>:
+    mode: "outlined"
+    hint_text_color_normal: app.text_secondary
+    hint_text_color_focus: app.primary_color
+    line_color_normal: app.text_secondary
+    line_color_focus: app.primary_color
+    normal_color: app.primary_color
+
+<MDTopAppBar>:
+    md_bg_color: app.primary_color
+    specific_text_color: 1, 1, 1, 1
+    elevation: 2
+
+# ────────────────────────────────────────────────
+# Styles pour les composants Kanban
+# ────────────────────────────────────────────────
+
+<KanbanColumn>:
+    md_bg_color: get_color_from_hex("#F5F7FA")
+    elevation: 2
+    radius: [16,]
+
+<TaskCard>:
+    md_bg_color: 1, 1, 1, 1
+    elevation: 3
+    radius: [12,]
+    ripple_effect: True
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: self.radius
+
+# ────────────────────────────────────────────────
+# Règles pour les messages d'erreur / success
+# ────────────────────────────────────────────────
+
+<MDLabel[text~='erreur' or text~='Erreur' or text~='échec']>:
+    theme_text_color: "Error"
+    bold: True
+
+# Option : règle pour les snackbars custom (si tu veux un style global)
+<MDSnackbar>:
+    md_bg_color: get_color_from_hex("#323232")
+    text_color: 1, 1, 1, 1
+
+# ────────────────────────────────────────────────
+# Règle pour tous les MDIcon (ex: icons plus grands par défaut)
+# ────────────────────────────────────────────────
+
+<MDIcon>:
+    theme_text_color: "Primary"

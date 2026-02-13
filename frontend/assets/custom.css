@@ -1,0 +1,42 @@
+/* frontend/assets/custom.css */
+.sidebar {
+    width: 240px;
+    overflow-y: auto;
+}
+
+.sidebar-title, .sidebar-subtitle {
+    font-weight: 600;
+    color: #495057;
+}
+
+.sidebar-content {
+    height: 100vh;
+}
+
+.kanban-column {
+    border-radius: 8px;
+    min-height: 500px;
+    padding: 15px;
+}
+
+.task-card {
+    cursor: grab;
+}
+
+.task-card:active {
+    cursor: grabbing;
+}
+
+@media (max-width: 992px) {
+    #sidebar {
+        width: 0;
+        overflow: hidden;
+        transition: width 0.3s;
+    }
+    #sidebar.open {
+        width: 260px;
+    }
+    #main-row .col:first-child {
+        display: none;  /* ou flex-basis: 0 */
+    }
+}
