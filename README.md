@@ -9,7 +9,7 @@ MVP d'une application de gestion de tâches en mode Kanban, 100% Python.
 - Auth : JWT
 - Temps réel : Tornado WebSocket
 
-## Lancement
+## Lancement teste
 
 ### Backend (API + WebSocket)
 ```bash
